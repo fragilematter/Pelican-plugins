@@ -95,11 +95,6 @@ def video(name, args, options, content, lineno,
 
     return [nodes.raw('', VIDEO.format(**opts), format='html')]
 
-video.content = True
-directives.register_directive('video', video)
-
-
-
 def audio(name, args, options, content, lineno,
             contentOffset, blockText, state, stateMachine):
     """ Restructured text extension for inserting html5 audio """
@@ -127,5 +122,8 @@ def audio(name, args, options, content, lineno,
 
     return [nodes.raw('', AUDIO.format(**opts), format='html')]
 
-audio.content = True
-directives.register_directive('audio', audio)
+def register():
+  video.content = True
+  audio.content = True
+  directives.register_directive('video', video)
+  directives.register_directive('audio', audio)
